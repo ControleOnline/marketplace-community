@@ -13,7 +13,7 @@ const routes = [
         name: "HomeIndex",
         path: "home",
         component: () =>
-          import("@controleonline/quasar-shop-ui/src/pages/Home.vue"),
+          import("@controleonline/quasar-shop-ui/src/pages/Categories.vue"),
       },
     ],
   },
