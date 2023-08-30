@@ -22,6 +22,7 @@ export default {
     this.newrelic();
     //this.setIndexRoute("HomeIndex");
   },
+  
 
   methods: {
     newrelic() {
