@@ -1,0 +1,38 @@
+name: Deploy Project
+on:
+  push:
+    branches: [production]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.16.0"
+      - name: Building the project
+        run: |
+          cd /home/runner/work/marketplace-community/marketplace-community
+          echo "export const ENTRYPOINT_LOCAL = 'https://api.controleonline.com'" > ./src/config/entrypoint.local.js
+          echo "export const DOMAIN_LOCAL = location.host" > ./src/config/domain.local.js
+          echo "const env = {\
+          OAUTH_GOOGLE_CLIENT_ID:'${{ secrets.OAUTH_GOOGLE_CLIENT_ID }}',\
+          GMAPS_GOOGLE_CLIENT_ID:'${{ secrets.GMAPS_GOOGLE_CLIENT_ID }}',\
+          };\
+          module.exports = { env };\
+          " > ./src/config/env.local.js
+          yarn
+          npm install
+          npm update
+          npx quasar build
+          npx quasar build -m pwa
+      - name: Copy to controleonline
+        uses: horochx/deploy-via-scp@master
+        with:
+          local: /home/runner/work/marketplace-community/marketplace-community/dist/*
+          remote: ~/sistemas/controleonline/marketplace/dist
+          host: sshproxy.cloudserver8.com
+          port: 22501
+          user: control2
+          key: ${{ secrets.CONTROLEONLINE }}

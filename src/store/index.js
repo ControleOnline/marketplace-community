@@ -1,15 +1,13 @@
-//import * as modules from "@controleonline/quasar-common-ui/src/store/modules";
-import auth from "@controleonline/quasar-login-ui/src/store/modules/auth";
-import shop from "@controleonline/quasar-shop-ui/src/store/modules/shop";
 import categories from "@controleonline/quasar-common-ui/src/store/categories";
-import menu from "@controleonline/quasar-common-ui/src/store/menu";
-import users from "@controleonline/quasar-common-ui/src/store/users";
-import gmaps from "@controleonline/quasar-common-ui/src/store/gmaps";
-import people from "@controleonline/quasar-common-ui/src/store/people";
 import config from "@controleonline/quasar-common-ui/src/store/config";
+import gmaps from "@controleonline/quasar-common-ui/src/store/gmaps";
+import menu from "@controleonline/quasar-common-ui/src/store/menu";
+import people from "@controleonline/quasar-common-ui/src/store/people";
 import profile from "@controleonline/quasar-common-ui/src/store/profile";
 import user from "@controleonline/quasar-common-ui/src/store/user";
-
+import users from "@controleonline/quasar-common-ui/src/store/users";
+import auth from "@controleonline/quasar-login-ui/src/store/modules/auth";
+import queues from "@controleonline/quasar-queues-ui/src/store/modules/queues";
 import { store } from "quasar/wrappers";
 import { createStore } from "vuex";
 
@@ -28,7 +26,7 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
       auth,
-      shop,
+      queues,
       categories,
       menu,
       users,

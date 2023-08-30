@@ -1,0 +1,45 @@
+name: Deploy Project
+on:
+  push:
+    branches: [develop]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14.14.0"
+      - name: Building the project dev
+        run: |
+          cd /home/runner/work/marketplace-community/marketplace-community
+          echo "export const ENTRYPOINT_LOCAL = 'https://api.dev.controleonline.com'" > ./src/config/entrypoint.local.js
+          echo "export const DOMAIN_LOCAL = location.host" > ./src/config/domain.local.js
+          yarn
+          npm install
+          npm update
+          npx quasar build
+          npx quasar build -m pwa
+      - name: Copy to controleonline dev
+        uses: horochx/deploy-via-scp@master
+        with:
+          local: /home/runner/work/marketplace-community/marketplace-community/dist/*
+          remote: ~/sistemas/controleonline/marketplace/dist
+          host: dev.controleonline.com
+          port: 22
+          user: controleonline1
+          key: ${{ secrets.LOCAWEB }} 
+      - name: Update Controle Online      
+        uses: appleboy/ssh-action@master
+        with:
+          host: dev.controleonline.com
+          username: controleonline1
+          key: ${{ secrets.LOCAWEB }}
+          port: 22        
+          script: |
+                  cd ~/sistemas/controleonline/api
+                  git checkout develop
+                  git pull origin develop                
+                  php composer.phar install --no-suggest
+                  php bin/console doctrine:migrations:migrate --no-interaction                                   
