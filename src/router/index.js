@@ -17,7 +17,7 @@ import routes from "./routes";
  * with the Router instance.
  */
 
-export default route(function ( { store, ssrContext } ) {
+export default route(function ({ store, ssrContext }) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
     : process.env.VUE_ROUTER_MODE === "history"
@@ -62,7 +62,6 @@ export default route(function ( { store, ssrContext } ) {
           api_key: session.token,
           people: session.people,
           company: session.company,
-          
           email: session.email,
           phone: session.phone,
           avatar: session.avatar,
@@ -73,46 +72,41 @@ export default route(function ( { store, ssrContext } ) {
 
         return true;
       }
-    } 
+    }
 
     return false;
   };
 
   Router.beforeEach((to, from, next) => {
-    const isLoginPage = to.path == "/login";
-    const isHomePage = to.path == "/";
-    const publicPages = ["/login", "/quote", "/shop"];
-    const isPrivatePage = !publicPages.includes(to.path);
+    const isLoginPage = to.name == "LoginIndex";
+
+    const publicPages = [
+      "LoginIndex",
+      "ChecklistDetails",
+      "ContractAccept",
+      "ProductsInCategory",
+      "CategoriesIndex",
+      "ProductDetails",
+      "QuoteIndex",
+      "ShopIndex",
+      "ForgotPassword",
+    ];
+    const isPrivatePage = !publicPages.includes(to.name);
     const isLogged = autoLogin();
 
-    // ------ /task/checklist/id/{integer}
-    if (to.name === "ChecklistDetails" || to.name === "ContractAccept") {
-      // Para não redirecionar para página de login ao abrir vistoria sem estar logado
-      return next();
-    }
-
-    //sub router for /shop
-    if (
-      to.name === "ProductsInCategory" ||
-      to.name === "CategoriesIndex" ||
-      to.name === "ProductDetails"
-    ) {
-      return next();
-    }
-
-    if (to.path.match(/^\/forgot-password\/[\w\W]+\/[\w\W]+$/g)) {
-      return next();
-    }
-
-    if ((isLoginPage || isHomePage) && isLogged) {
+    if ((isLoginPage && isLogged) || to.name == undefined) {
       return next({ name: "HomeIndex" });
     }
 
-    if (isPrivatePage === true && isLogged === false) {
-      return next("/login");
+    if (
+      isPrivatePage === true &&
+      isLogged === false &&
+      to.name != "LoginIndex"
+    ) {
+      return next({ name: "LoginIndex" });
     }
 
-    next();
+    return next();
   });
 
   return Router;

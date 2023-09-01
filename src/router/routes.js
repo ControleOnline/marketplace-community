@@ -8,7 +8,7 @@ const routes = [
   ...Shop.routes,
   {
     path: "/",
-    component: () => import("layouts/ShopLayout.vue"),
+    component: () => import("@controleonline/quasar-layout-ui/src/layouts/ShopLayout.vue"),
     children: [
       {
         name: "HomeIndex",
