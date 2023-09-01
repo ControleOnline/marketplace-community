@@ -7,7 +7,7 @@ import profile from "@controleonline/quasar-common-ui/src/store/profile";
 import user from "@controleonline/quasar-common-ui/src/store/user";
 import users from "@controleonline/quasar-common-ui/src/store/users";
 import auth from "@controleonline/quasar-login-ui/src/store/modules/auth";
-import queues from "@controleonline/quasar-queues-ui/src/store/modules/queues";
+import shop from "@controleonline/quasar-shop-ui/src/store/modules/shop";
 import { store } from "quasar/wrappers";
 import { createStore } from "vuex";
 
@@ -26,7 +26,7 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
       auth,
-      queues,
+      shop,
       categories,
       menu,
       users,
