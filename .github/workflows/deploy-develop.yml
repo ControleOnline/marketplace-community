@@ -29,7 +29,7 @@ jobs:
           }\
           };\
           module.exports = { env };\
-          " > ./src/config/env.local.js         
+          " > ./src/config/env.local.js          
           yarn
 
           npx quasar build
@@ -38,7 +38,7 @@ jobs:
         uses: horochx/deploy-via-scp@master
         with:
           local: /home/runner/work/marketplace-community/marketplace-community/dist/*
-          remote: ~/sistemas/controleonline/marketplace/dist
+          remote: ~/sistemas/controleonline/display/dist
           host: dev.controleonline.com
           port: 22
           user: controleonline1

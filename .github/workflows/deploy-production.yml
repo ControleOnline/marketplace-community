@@ -38,7 +38,7 @@ jobs:
         uses: horochx/deploy-via-scp@master
         with:
           local: /home/runner/work/marketplace-community/marketplace-community/dist/*
-          remote: ~/sistemas/controleonline/marketplace/dist
+          remote: ~/sistemas/controleonline/display/dist
           host: sshproxy.cloudserver8.com
           port: 22501
           user: control2
