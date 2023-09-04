@@ -1,7 +1,7 @@
 import ptBR from "./pt-br";
-import enUR from "./en-us";
+import enUs from "./en-us";
 
 export default {
   "pt-br": ptBR,
-  "en-us": enUR,
+  "en-us": enUs,
 };
