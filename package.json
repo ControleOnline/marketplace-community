@@ -13,6 +13,7 @@
     "@controleonline/quasar-layout-ui": "^1.0.4",
     "@controleonline/quasar-login-ui": "^1.0.93",
     "@controleonline/quasar-shop-ui": "^1.0.10",
+    "@controleonline/quasar-products-ui": "^1.0.0",
     "@fontsource/metropolis": "^4.5.3",
     "@newrelic/browser-agent": "^1.239.1",
     "@quasar/app": "^3.3.3",
