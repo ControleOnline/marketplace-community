@@ -2,14 +2,7 @@ import { combineReducers } from "redux";
 import { createStore, applyMiddleware } from "redux";
 import { thunk } from "redux-thunk";
 
-import config from "@controleonline/ui-legacy/ui-common/src/store/config";
-import gmaps from "@controleonline/ui-legacy/ui-common/src/store/gmaps";
-import menu from "@controleonline/ui-legacy/ui-common/src/store/menu";
-import profile from "@controleonline/ui-legacy/ui-common/src/store/profile";
-import user from "@controleonline/ui-legacy/ui-common/src/store/user";
-import guides from "@controleonline/ui-legacy/ui-guides/src/store/guides";
 import auth from "@controleonline/ui-login/src/store/modules/auth";
-import quote from "@controleonline/ui-legacy/ui-logistic/src/store/modules/quote";
 import support from "@controleonline/ui-support/src/store/support";
 
 import model from "@controleonline/ui-crm/src/store/model";
@@ -71,7 +64,6 @@ const rootReducer = combineReducers({
   queues,
   contract_people,
   displays,
-  gmaps,
   contract,
   model,
   emails,
@@ -80,17 +72,11 @@ const rootReducer = combineReducers({
   documents,
   product_orders,
   people,
-  config,
-  profile,
-  user,
-  quote,
   invoice,
   wallet,
   paymentType,
   support,
-  guides,
   categories,
-  menu,
   users,
   products,
   product_unit,

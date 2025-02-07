@@ -19,9 +19,9 @@ const routes = [
     children: [
       {
         name: "HomeIndex",
-        path: "home",
+        path: "",
         component: () =>
-          import("@controleonline/ui-shop/src/pages/Categories.vue"),
+          import("@controleonline/ui-shop/src/pages/Home.vue"),
       },
     ],
   },
