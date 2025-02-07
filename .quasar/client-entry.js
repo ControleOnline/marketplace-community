@@ -25,6 +25,10 @@ import '@quasar/extras/material-icons/material-icons.css'
 
 
 
+import '@quasar/extras/animate/fadeIn.css'
+
+import '@quasar/extras/animate/fadeOut.css'
+
 
 // We load Quasar stylesheet file
 import 'quasar/dist/quasar.sass'
@@ -36,6 +40,12 @@ import 'quasar/src/css/flex-addon.sass'
 
 
 import 'src/css/app.scss'
+
+import 'src/css/colors/theme.scss'
+
+import 'src/css/colors/light.scss'
+
+import 'src/css/colors/dark.scss'
 
 
 import createQuasarApp from './app.js'
@@ -157,6 +167,8 @@ createQuasarApp(createApp, quasarUserOptions)
     return Promise[ method ]([
       
       import(/* webpackMode: "eager" */ 'boot/i18n'),
+      
+      import(/* webpackMode: "eager" */ 'boot/methods'),
       
       import(/* webpackMode: "eager" */ 'boot/api'),
       

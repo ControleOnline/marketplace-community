@@ -1,6 +1,25 @@
-//import Vue       from 'vue';
-//import Contracts from '@controleonline/quasar-contracts-ui';
-//import Dashboard from '@controleonline/quasar-dashboard-ui'
+import { boot } from "quasar/wrappers";
+import DefaultTable from "@controleonline/ui-default/src/components/Default/DefaultTable";
+import DefaultForm from "@controleonline/ui-default/src/components/Default/Common/DefaultForm";
+import File from "@controleonline/ui-default/src/components/Default/Common/Inputs/File.vue";
+import FileExplorer from "@controleonline/ui-common/src/components/Common/FileExplorer";
+import DefaultButtonDialog from "@controleonline/ui-default/src/components/Default/DefaultButtonDialog";
+import DefaultComponent from "@controleonline/ui-default/src/components/Default/DefaultComponent.vue";
 
-//Vue.use(Contracts);
-//Vue.use(Dashboard);
+export default boot(({ app }) => {
+  app.component("DefaultTable", DefaultTable);
+  app.component("DefaultButtonDialog", DefaultButtonDialog);
+  app.component("FileExplorer", FileExplorer);
+  app.component("DefaultForm", DefaultForm);
+  app.component("File", File);
+  app.component("DefaultComponent", DefaultComponent);
+
+  app.config.globalProperties.$components = {
+    DefaultTable,
+    DefaultComponent,
+    DefaultButtonDialog,
+    FileExplorer,
+    DefaultForm,
+    File,
+  };
+});
