@@ -1,40 +1,65 @@
-import categories from "@controleonline/quasar-common-ui/src/store/categories";
-import config from "@controleonline/quasar-common-ui/src/store/config";
-import gmaps from "@controleonline/quasar-common-ui/src/store/gmaps";
-import menu from "@controleonline/quasar-common-ui/src/store/menu";
-import people from "@controleonline/quasar-common-ui/src/store/people";
-import profile from "@controleonline/quasar-common-ui/src/store/profile";
-import user from "@controleonline/quasar-common-ui/src/store/user";
-import users from "@controleonline/quasar-common-ui/src/store/users";
-import auth from "@controleonline/quasar-login-ui/src/store/modules/auth";
-import shop from "@controleonline/quasar-shop-ui/src/store/modules/shop";
+import auth from "@controleonline/ui-login/src/store/modules/auth";
+import users from "@controleonline/ui-users/src/store/users";
+import address from "@controleonline/ui-people/src/store/address";
+import documents from "@controleonline/ui-people/src/store/documents";
+import phones from "@controleonline/ui-people/src/store/phones";
+import emails from "@controleonline/ui-people/src/store/emails";
+import people from "@controleonline/ui-people/src/store/people";
+import theme from "@controleonline/ui-layout/src/store/theme";
+import orders from "@controleonline/ui-orders/src/store/orders";
+import product_orders from "@controleonline/ui-orders/src/store/product_orders";
+import expanded_product_orders from "@controleonline/ui-orders/src/store/expanded_product_orders";
+import categories from "@controleonline/ui-common/src/store/categories";
+import status from "@controleonline/ui-common/src/store/status";
+import products from "@controleonline/ui-products/src/store/products";
+import product_unit from "@controleonline/ui-products/src/store/products/product_unit";
+import product_category from "@controleonline/ui-products/src/store/products/product_category";
+import product_group from "@controleonline/ui-products/src/store/products/product_group";
+import product_group_product from "@controleonline/ui-products/src/store/products/product_group_product";
+import product_group_feedstock from "@controleonline/ui-products/src/store/products/product_group_feedstock";
+import city from "@controleonline/ui-common/src/store/address/city";
+import language from "@controleonline/ui-translate/src/store/language";
+import translate from "@controleonline/ui-translate/src/store/translate";
+import tt from "@controleonline/ui-common/src/store/tt";
+import menus from "@controleonline/ui-config/src/store/menus";
+import routes from "@controleonline/ui-config/src/store/routes";
+import modules from "@controleonline/ui-config/src/store/modules";
+import configs from "@controleonline/ui-config/src/store/configs";
+import file from "@controleonline/ui-common/src/store/file";
+
 import { store } from "quasar/wrappers";
 import { createStore } from "vuex";
-
-// import example from './module-example'
-
-/*
- * If not building with SSR mode, you can
- * directly export the Store instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Store instance.
- */
-
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
+      modules,
+      routes,
+      menus,
+      status,
       auth,
-      shop,
       categories,
-      menu,
       users,
-      gmaps,
+      products,
+      product_unit,
+      product_group,
+      product_group_product,
+      product_group_feedstock,
+      product_category,
+      expanded_product_orders,
+      city,
+      product_orders,
+      orders,
+      theme,
+      translate,
+      language,
+      configs,
+      file,
+      tt,
+      address,
+      documents,
+      phones,
+      emails,
       people,
-      config,
-      profile,
-      user,
     },
 
     // enable strict mode (adds overhead!)

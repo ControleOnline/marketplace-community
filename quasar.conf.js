@@ -6,10 +6,15 @@ module.exports = function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
-    boot: ["i18n", "api", "custom"],
+    boot: ["i18n","methods", "api", "custom" ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
-    css: ["app.scss"],
+    css: [
+      "app.scss",
+      "colors/theme.scss",
+      "colors/light.scss",
+      "colors/dark.scss",
+    ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
@@ -38,7 +43,7 @@ module.exports = function (ctx) {
       //            (fastest compile time; minimum bundle size; most tedious)
       // * true   - Import everything from Quasar
       //            (not treeshaking Quasar; biggest bundle size; convenient)
-      all: false,
+      all: "auto",
 
       components: [
         "QLayout",
@@ -106,7 +111,7 @@ module.exports = function (ctx) {
       // showProgress: false,
       // gzip: true,
       // analyze: true,
-      env: require("./src/config/env").ENV_APP,
+      env: require("./config/env").APP_ENV,
 
       // Options below are automatically set depending on the env, set them if you want to override
       // preloadChunks: false,
@@ -124,6 +129,7 @@ module.exports = function (ctx) {
       // },
       // https://quasar.dev/quasar-cli/cli-documentation/handling-webpack
       extendWebpack(cfg) {},
+      chainWebpack(chain) {},
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
@@ -135,9 +141,7 @@ module.exports = function (ctx) {
 
     // animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations
-    animations: [
-      //  "fadeIn", "fadeOut"
-    ],
+    animations: ["fadeIn", "fadeOut"],
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
@@ -151,9 +155,9 @@ module.exports = function (ctx) {
         exclude: [/\.htaccess$/], // Excluir o arquivo icon.png do pré-carregamento
       }, // only for GenerateSW
       manifest: {
-        name: "Display Controle Online",
-        short_name: "Display Controle Online",
-        description: "Display Controle Online",
+        name: "Controle Online",
+        short_name: "Controle Online",
+        description: "Controle Online",
         display: "standalone",
         orientation: "portrait",
         background_color: "#ffffff",
@@ -191,7 +195,8 @@ module.exports = function (ctx) {
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-      id: "org.cordova.quasar.app",
+      id: "com.controleonline.app",
+      hideSplashscreen: true, // Esconder a tela de splash automaticamente
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
@@ -217,7 +222,7 @@ module.exports = function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: "display_controleonline",
+        appId: "controleonline",
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
