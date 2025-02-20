@@ -16,6 +16,7 @@ export default ({ app, store }) => {
   app.config.globalProperties.$copyObject = (obj) => methods.copyObject(obj);
   app.config.globalProperties.$formatter = Formatter;
   app.config.globalProperties.$domain = APP_ENV.DOMAIN || location.host;
+  app.config.globalProperties.$env = APP_ENV
   app.config.globalProperties.$entrypoint = APP_ENV.API_ENTRYPOINT;
   app.config.globalProperties.$image = function (file) {
     if (!file) return "https://cdn.quasar.dev/img/avatar4.jpg";
