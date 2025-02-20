@@ -10,12 +10,14 @@ const t = new Translate();
 
 export default ({ app, store }) => {
   app.config.globalProperties.$auth = {
-    logout(reload = false) {
+    logout(noReload = false) {
       store.dispatch("auth/logOut");
-      if (reload) location.reload();
+      if (!noReload) location.reload();
     },
     toLogin() {
-      this.$router.push("/login");
+      this.$router.push({
+        name: "LoginIndex",
+      });
     },
     isLogged() {
       return (
