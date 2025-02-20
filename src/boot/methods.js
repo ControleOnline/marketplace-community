@@ -1,34 +1,18 @@
 import { createApp } from "vue";
 import Formatter from "@controleonline/ui-common/src/utils/formatter.js";
 import * as methods from "@controleonline/ui-common/src/utils/methods.js";
-
+import Auth from "@controleonline/ui-common/src/utils/auth.js";
 import Translate from "@controleonline/ui-common/src/utils/translate.js";
 import { APP_ENV } from "../../config/env.js";
+import { useRouter } from "vue-router";
 
 const app = createApp({});
 const t = new Translate();
 
 export default ({ app, store }) => {
-  app.config.globalProperties.$auth = {
-    logout(noReload = false) {
-      store.dispatch("auth/logOut");
-      if (!noReload) location.reload();
-    },
-    toLogin() {
-      this.$router.push({
-        name: "LoginIndex",
-      });
-    },
-    isLogged() {
-      return (
-        store.getters["auth/user"] !== null &&
-        store.getters["auth/user"].api_key
-      );
-    },
-    user() {
-      return store.getters["auth/user"];
-    },
-  };
+  const router = useRouter();
+
+  app.config.globalProperties.$auth = new Auth(store, router);
   app.config.globalProperties.$copyObject = (obj) => methods.copyObject(obj);
   app.config.globalProperties.$formatter = Formatter;
   app.config.globalProperties.$domain = APP_ENV.DOMAIN || location.host;
