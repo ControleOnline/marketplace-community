@@ -14,7 +14,7 @@ jobs:
         run: |
           echo "const env = {\
           API_ENTRYPOINT: 'https://api.controleonline.com',\
-          ZOOM: 0.80\,
+          ZOOM: 0.80,\
           APP_TYPE: 'SHOP',\
           OAUTH_GOOGLE_CLIENT_ID:'${{ secrets.OAUTH_GOOGLE_CLIENT_ID }}',\
           GMAPS_GOOGLE_CLIENT_ID:'${{ secrets.GMAPS_GOOGLE_CLIENT_ID }}',\
