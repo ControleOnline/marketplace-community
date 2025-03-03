@@ -26,6 +26,7 @@ import routes from "@controleonline/ui-config/src/store/routes";
 import modules from "@controleonline/ui-config/src/store/modules";
 import configs from "@controleonline/ui-config/src/store/configs";
 import file from "@controleonline/ui-common/src/store/file";
+import acl from "@controleonline/ui-common/src/store/acl";
 
 import { store } from "quasar/wrappers";
 import { createStore } from "vuex";
@@ -33,6 +34,7 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
       modules,
+      acl,
       routes,
       menus,
       status,
