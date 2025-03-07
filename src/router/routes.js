@@ -20,8 +20,8 @@ const routes = [
       {
         name: "HomeIndex",
         path: "",
-        component: () =>
-          import("@controleonline/ui-shop/src/pages/Home.vue"),
+        meta: { isPublic: true },
+        component: () => import("@controleonline/ui-shop/src/pages/Home.vue"),
       },
     ],
   },
