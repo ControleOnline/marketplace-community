@@ -21,7 +21,7 @@ const routes = [
         name: "HomeIndex",
         path: "",
         meta: { isPublic: true },
-        component: () => import("@controleonline/ui-shop/src/vue/Pages/Home.vue"),
+        component: () => import("@controleonline/ui-shop/src/vue/pages/Home.vue"),
       },
     ],
   },
