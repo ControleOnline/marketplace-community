@@ -20,7 +20,6 @@ import product_group_feedstock from "@controleonline/ui-products/src/store/produ
 import city from "@controleonline/ui-common/src/store/address/city";
 import language from "@controleonline/ui-translate/src/store/language";
 import translate from "@controleonline/ui-translate/src/store/translate";
-import tt from "@controleonline/ui-common/src/store/tt";
 import menus from "@controleonline/ui-config/src/store/menus";
 import routes from "@controleonline/ui-config/src/store/routes";
 import modules from "@controleonline/ui-config/src/store/modules";
@@ -58,7 +57,6 @@ export default store(function (/* { ssrContext } */) {
       language,
       configs,
       file,
-      tt,
       address,
       documents,
       phones,
