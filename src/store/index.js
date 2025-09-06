@@ -7,6 +7,9 @@ import emails from "@controleonline/ui-people/src/store/emails";
 import people from "@controleonline/ui-people/src/store/people";
 import theme from "@controleonline/ui-layout/src/store/theme";
 import orders from "@controleonline/ui-orders/src/store/orders";
+import invoice from "@controleonline/ui-financial/src/store/invoice";
+import asaas from "@controleonline/ui-financial/src/store/asaas";
+import card from "@controleonline/ui-financial/src/store/card";
 import order_products from "@controleonline/ui-orders/src/store/order_products";
 import expanded_order_products from "@controleonline/ui-orders/src/store/expanded_order_products";
 import categories from "@controleonline/ui-common/src/store/categories";
@@ -43,6 +46,9 @@ export default store(function (/* { ssrContext } */) {
       categories,
       users,
       products,
+      invoice,
+      asaas,
+      card,
       product_unit,
       product_group,
       product_group_product,
